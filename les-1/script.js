@@ -3,18 +3,18 @@ const goods = [
     { img: 'img/socks.jpg', title: 'Socks', price: 50 },
     { img: 'img/jacket.jpg', title: 'Jacket', price: 350 },
     { img: 'img/shoes.webp', title: 'Shoes', price: 250 },
-    { img: 'img/shirt.jpg', title: 'Shirt', price: 150 },
-    { img: 'img/socks.jpg', title: 'Socks', price: 50 },
+    { img: 'img/shirt.jpg', title: 'Shirt', price: 151 },
+    { img: 'img/socks.jpg', title: 'Socks', price: 51 },
     { img: 'img/jacket.jpg', title: 'Jacket', price: 350 },
     { img: 'img/shoes.webp', title: 'Shoes', price: 250 },
-    { img: 'img/shirt.jpg', title: 'Shirt', price: 150 },
-    { img: 'img/socks.jpg', title: 'Socks', price: 50 },
+    { img: 'img/shirt.jpg', title: 'Shirt', price: 152 },
+    { img: 'img/socks.jpg', title: 'Socks', price: 52 },
     { img: 'img/jacket.jpg', title: 'Jacket', price: 350 },
     { img: 'img/shoes.webp', title: 'Shoes', price: 250 },
 ]
 
 const renderGoodsItem = (img, title, price) => {
-    return `<div class="goods-item"><div class="photo-product"><img src="${img}" alt="photo" width=100%></div><h3>${title}</h3><p class = "price">Price: ${price}</p><button class="add-basket">Добавить</button></div>`
+    return `<div class="goods-item"><div class="photo-product"><img src="${img}" alt="photo" width=100%></div><h3>${title}</h3><p class = "price">Price: ${price}$</p><button class="add-basket">Добавить</button></div>`
 }
 
 const renderGoodsList = list => {
