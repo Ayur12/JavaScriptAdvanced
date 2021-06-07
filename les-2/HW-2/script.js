@@ -14,14 +14,22 @@ class GoodsList {
     }
     fetchGoods() {
         this.goods = [
-            { title: "Shirt", price: 150 },
-            { title: "Socks", price: 50 },
-            { title: "Jacket", price: 350 },
-            { title: "Shoes", price: 250 },
+            { img: 'img/shirt.jpg', title: 'Shirt1', price: 150, id: 'Shirt1' },
+            { img: 'img/socks.jpg', title: 'Socks1', price: 50, id: 'Socks1' },
+            { img: 'img/jacket.jpg', title: 'Jacket1', price: 350, id: 'Jacket1' },
+            { img: 'img/shoes.webp', title: 'Shoes1', price: 250, id: 'Shoes1' },
+            { img: 'img/shirt.jpg', title: 'Shirt2', price: 151, id: 'Shirt2' },
+            { img: 'img/socks.jpg', title: 'Socks2', price: 51, id: 'Socks2' },
+            { img: 'img/jacket.jpg', title: 'Jacket2', price: 350, id: 'Jacket2' },
+            { img: 'img/shoes.webp', title: 'Shoes2', price: 250, id: 'Shoes2' },
+            { img: 'img/shirt.jpg', title: 'Shirt3', price: 152, id: 'Shirt3' },
+            { img: 'img/socks.jpg', title: 'Socks3', price: 52, id: 'Socks3' },
+            { img: 'img/jacket.jpg', title: 'Jacket3', price: 350, id: 'Jacket3' },
+            { img: 'img/shoes.webp', title: 'Shoes3', price: 250, id: 'Shoes3' },
         ];
     }
-    totalPrice(){       
-        
+    totalPrice() {
+
     }
     render() {
         let listHtml = "";
@@ -39,18 +47,18 @@ class Basket {
     }
 
     //добавление товара в корзину
-    addItem(){
+    addItem() {
         this.goods.push()
     }
     //удаление товара из корзины
-    removeItem(){
+    removeItem() {
 
     }
     //Итоговая сумма товаров в корзине
-    totalPrice(){
+    totalPrice() {
 
     }
-    render() { 
+    render() {
 
     }
 
