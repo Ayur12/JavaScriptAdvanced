@@ -33,7 +33,6 @@ const init = () => {
     const regexp = /'/g;
     const newText = text.replace(regexp, '"');
     console.log(newText);
-
 }
 
 window.onload = init;

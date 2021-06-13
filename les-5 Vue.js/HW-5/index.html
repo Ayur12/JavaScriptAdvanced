@@ -18,12 +18,13 @@
         </header>
         <main>
             <div class="goods-list">
-                <div class="goods-item" v-for="good in filteredGoods">
+                <div class="goods-item" v-for="good in filteredGoods" v-if = "filteredGoods.length > 0">
                     <h3>{{good.product_name}}</h3>
                     <p>{{good.price}}</p>
 
                     <button :id='good.id_product' v-on:click='addBasket()'>В корзину</button>
                 </div>
+                <div v-if = "filteredGoods.length === 0"><p>Список товаров пуст</p></div>
             </div>
             <div class="basket" id="basket" v-if='isVisibleCart'>
                 <p>Корзина покупок</p>
