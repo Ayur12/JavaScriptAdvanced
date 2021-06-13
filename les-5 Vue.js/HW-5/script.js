@@ -51,37 +51,3 @@ const app = new Vue({
         await this.getProducts()
     }
 });
-
-/*
-let list = document.querySelector('.output ul');
-list.innerHTML = '';
-let greetings = [
-    'С днем рождения',
-    'С рождеством - любовь моя!',
-    'Счастливого Рождества всей твоей семье.',
-    'Ты - та, кто нужен мне на Рождество.',
-    'Поправляйся скорее'
-]
-
-
-
-for (let i = 0; i < greetings.length; i++) {
-    let input = greetings[i]
-    if (greetings[i].indexOf('ождеств') !== -1) {
-        let result = input;
-        let listItem = document.createElement('li');
-        listItem.textContent = result;
-        list.appendChild(listItem);
-    }
-};*/
-  // filterGoods() {
-        //     //this.searchLine = document.querySelector('.goods-search').value;
-        //     //this.filteredGoods.push(this.searchLine);
-        //     for (let i = 0; i < this.filteredGoods.length; i++) {
-        //         this.searchLine = document.querySelector('.goods-search').value;
-        //         if (this.goods[i].indexOf(searchLine) !== -1) {
-
-        //         }
-        //     }
-
-        // },
