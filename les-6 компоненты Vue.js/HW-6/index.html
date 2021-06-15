@@ -17,14 +17,21 @@
         </header>
         <main>
             <goods-list :goods="filteredGoods"></goods-list>
+            <button class="cart-button" type="button" v-on:click='isVisibleCart = !isVisibleCart'>Корзина</button>
 
-            <div class="basket" id="basket">
-                <button class="basket-button" @click='isVisibleCart = !isVisibleCart'>Корзина</button>
-
-                <div class="basket-list" v-if='isVisibleCart'>
-                    <p>Список товаров пуст</p>
+            <!-- <basket-list :goods='basketList' v-model = 'addBasket'></basket-list> -->
+            <div class="basket" id="basket" v-if='isVisibleCart'>
+                <h2>Корзина покупок</h2>
+                <div class="basket-list">
+                    <div class="basket-item" v-for="good in basketList" v-if="basketList.length > 0">
+                        <h3>{{good.product_name}}</h3>
+                        <p>{{good.price}}</p>
+                    </div>
+                    <div v-if="basketList.length === 0">
+                        <p>Вы пока еще ничего не добавили в корзину</p>
+                    </div>
                 </div>
-            </div>            
+            </div>
         </main>
 
     </div>

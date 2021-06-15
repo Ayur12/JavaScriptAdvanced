@@ -12,13 +12,13 @@
 <body>
     <div id="app">
         <header>
-            <input type="text" class="goods-search" />
+            <input type="text" class="goods-search" v-on:keydown.enter='filterGoods' />
             <button class="search-button" type="button" v-on:click='filterGoods'>Искать</button>
             <button class="cart-button" type="button" v-on:click='isVisibleCart = !isVisibleCart'>Корзина</button>
         </header>
         <main>
-            <div class="goods-list">   
-                <h1>Каталог товаров</h1>             
+            <div class="goods-list">
+                <h1>Каталог товаров</h1>
                 <div class="goods-item" v-for="good in filteredGoods" v-if="filteredGoods.length > 0">
                     <h3>{{good.product_name}}</h3>
                     <p>{{good.price}}</p>
@@ -34,7 +34,7 @@
                 <div class="basket-list">
                     <div class="basket-item" v-for="good in basketList" v-if="basketList.length > 0">
                         <h3>{{good.product_name}}</h3>
-                        <p>{{good.price}}</p>                        
+                        <p>{{good.price}}</p>
                     </div>
                     <div v-if="basketList.length === 0">
                         <p>Вы пока еще ничего не добавили в корзину</p>
