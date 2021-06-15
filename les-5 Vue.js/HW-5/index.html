@@ -17,17 +17,29 @@
             <button class="cart-button" type="button" v-on:click='isVisibleCart = !isVisibleCart'>Корзина</button>
         </header>
         <main>
-            <div class="goods-list">
-                <div class="goods-item" v-for="good in filteredGoods" v-if = "filteredGoods.length > 0">
+            <div class="goods-list">   
+                <h1>Каталог товаров</h1>             
+                <div class="goods-item" v-for="good in filteredGoods" v-if="filteredGoods.length > 0">
                     <h3>{{good.product_name}}</h3>
                     <p>{{good.price}}</p>
-
-                    <button :id='good.id_product' v-on:click='addBasket()'>В корзину</button>
+                    <button class="btnAddGood" :id='good.id_product' v-on:click='addBasket(good.id_product)'>В
+                        корзину</button>
                 </div>
-                <div v-if = "filteredGoods.length === 0"><p>Список товаров пуст</p></div>
+                <div v-if="filteredGoods.length === 0">
+                    <p>Список товаров пуст</p>
+                </div>
             </div>
             <div class="basket" id="basket" v-if='isVisibleCart'>
-                <p>Корзина покупок</p>
+                <h1>Корзина покупок</h1>
+                <div class="basket-list">
+                    <div class="basket-item" v-for="good in basketList" v-if="basketList.length > 0">
+                        <h3>{{good.product_name}}</h3>
+                        <p>{{good.price}}</p>                        
+                    </div>
+                    <div v-if="basketList.length === 0">
+                        <p>Вы пока еще ничего не добавили в корзину</p>
+                    </div>
+                </div>
             </div>
         </main>
     </div>

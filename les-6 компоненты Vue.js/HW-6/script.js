@@ -4,6 +4,39 @@ const API_URL =
 
 
 
+Vue.component('goods-list', {
+    props: ['goods'],
+    template: `
+        <div class = "goods-list">
+        <goods-item v-for = "goodEntity in goods" :goodProp = "goodEntity"></goods-item>
+        </div>
+    `
+});
+
+Vue.component('goods-item', {
+    props: ['goodProp', "addBasket"],
+    template: `
+        <div class = "goods-item">
+            <h3>{{goodProp.product_name}}</h3>
+            <p>{{goodProp.price}}</p>
+            <button :id='goodProp.id_product' @click='addBasket'>В корзину</button>
+        </div>
+    `
+});
+
+Vue.component('custom-input', {
+    props: ['value'],
+    template: `
+        <input class = 'custom-input'
+        v-bind:value='searchLine'
+        v-on:input="$emit('input', $event.target.value)"
+        v-on:keyup.enter="submit"
+      >      
+    `
+});
+
+
+
 const app = new Vue({
     el: "#app",
     data: {
@@ -12,6 +45,7 @@ const app = new Vue({
         searchLine: '',
         basketList: [],
         isVisibleCart: false,
+        count: 0,
     },
 
     methods: {
@@ -24,11 +58,10 @@ const app = new Vue({
             } else {
                 alert("Ошибка при соединении с сервером");
             }
-
         },
 
         filterGoods() {
-            this.searchLine = document.querySelector('.goods-search').value;
+            this.searchLine = document.querySelector('.custom-input').value;
             let userInput = this.searchLine;
             this.goods.forEach((good) => {
                 if (good.product_name == userInput) {
@@ -36,27 +69,21 @@ const app = new Vue({
                     this.filteredGoods.push(good);
                 }
             });
-
-        },
-        addBasket(clicked_id) {
-            let btn_id = clicked_id;
-            console.log(clicked_id);
-            this.goods.forEach((good) => {
-                if (good.id_product === btn_id) {
-                    this.basketList.push(good);
-                }
-            });
-
-            document.getElementById(clicked_id).textContent = 'Добавлено';
-            document.getElementById(clicked_id).disabled = true;
-
         },
 
+        addBasket() {
 
+            console.log('testClick')
+
+
+
+        }
     },
-
 
     async mounted() {
         await this.getProducts()
     }
 });
+
+
+

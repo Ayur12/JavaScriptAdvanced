@@ -11,33 +11,21 @@
 
 .goods-list {
     border: 2px solid black;
-    text-align: center;
-    
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: 20px;
 }
 
 .goods-item {
-    
     border: 1px solid wheat;
     width: 150px;
     box-sizing: border-box;
     padding: 0px 20px;
     margin: 10px 10px;
-    
 }
 .basket {
     margin: 20px;
     border: 2px solid rgb(54, 54, 54);
     text-align: center;
-}
-
-.basket-list {
-    border: 1px solid black;
-    margin: 20px;
-    display: flex;    
-}
-
-.basket-item {
-    border: 1px solid grey;
-    margin: 10px;
-    padding: 0 20px;
 }
