@@ -39,8 +39,7 @@ const app = new Vue({
 
         },
         addBasket(clicked_id) {
-            let btn_id = clicked_id;
-            console.log(clicked_id);
+            let btn_id = clicked_id;            
             this.goods.forEach((good) => {
                 if (good.id_product === btn_id) {
                     this.basketList.push(good);
