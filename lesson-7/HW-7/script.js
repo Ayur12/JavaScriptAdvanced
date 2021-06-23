@@ -6,7 +6,7 @@ Vue.component('custom-input', {
       <input class = 'custom-input'
       placeholder = 'введите запрос'
       v-bind:value='searchLine'
-      v-on:input="$emit('input', $event.target.value)"      
+      v-on:input="$emit('input', $event.target.value)"          
       >      
       `
 });
@@ -44,32 +44,34 @@ Vue.component("goods-item", {
 });
 
 
-Vue.component('basket-list', {
-  props: ['basketList'],
+Vue.component("basket-list", {
+  props: ['basket'],
   template: `
       <div class = "basket-list">
-      <basket-item v-for = "goodEntity in basketList" :goodProp = "goodEntity"></basket-item>
+      <basket-item v-for = "goodEntity in basket" :basketProp = "goodEntity"></basket-item>
       </div>
   `
 });
 
 Vue.component('basket-item', {
-  props: ['goodProp'],
+  props: ['basketProp'],
   methods: {
-    async getBasketProducts() {
-      const responce = await fetch(`${API_URL}/cart`);
-      if (responce.ok) {
-        const basketItems = await responce.json();
-        this.basketList = basketItems;
-      } else {
-        alert("Ошибка при соединении с сервером");
-      }
+    async removeToCart() {
+      const response = await fetch(`${API_URL}/removeToCart`, {
+        method: 'DELETE',
+        mode: 'cors',
+        headers: {
+          'Content-Type': 'application/json;charset=utf-8'
+        },
+        body: JSON.stringify(this.goodProp)
+      });
     },
   },
   template: `
       <div class = "basket-item">
-          <h3>{{goodProp.product_name}}</h3>
-          <p>{{goodProp.price}}</p>            
+          <h3>{{basketProp.product_name}}</h3>
+          <p>{{basketProp.price}}</p>      
+          <button @click=removeToCart>Удалить</button>      
       </div>
   `
 });
@@ -79,7 +81,8 @@ const app = new Vue({
   data: {
     goods: [],
     filteredGoods: [],
-    basketList: [],
+    basket: [],
+    filteredBasket: [],
     searchLine: '',
     isVisibleCart: false,
   },
@@ -106,10 +109,23 @@ const app = new Vue({
         }
       });
     },
+    async getBasketProducts() {
+      const responce = await fetch(`${API_URL}/cartData`);
+      if (responce.ok) {
+        const basketItems = await responce.json();
+        console.log(basketItems);
+        this.basket = basketItems;
+        this.filteredBasket = basketItems;
+      } else {
+        alert("Ошибка при соединении с сервером");
+      }
+    },
   },
 
   async mounted() {
     await this.getProducts();
     await this.getBasketProducts();
   },
+
+
 });

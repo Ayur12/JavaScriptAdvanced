@@ -42,7 +42,7 @@ Vue.component('goods-item', {
         <div class = "goods-item">
             <h3>{{goodProp.product_name}}</h3>
             <p>{{goodProp.price}}</p>
-            <button class = "btnAdd" :id='goodProp.id_product' @click='addBasket(goodProp.id_product)'>В корзину</button>
+            <button class = "btnAdd" :id='goodProp.id_product' @click=addBasket(goodProp.id_product)'>В корзину</button>
         </div>
     `
 });
@@ -57,6 +57,19 @@ Vue.component('basket-list', {
 });
 
 Vue.component('basket-item', {
+    methods: {
+        addBasket: function (clicked_id) {
+            let btn_id = clicked_id;
+            this.goods.forEach((good) => {
+                if (good.id_product === btn_id) {
+                    this.basketList.push(good);
+                }
+            });
+            document.getElementById(clicked_id).textContent = 'Добавлено';
+            document.getElementById(clicked_id).disabled = true;
+
+        },
+    },
     props: ['goodProp'],
     template: `
         <div class = "basket-item">
@@ -102,17 +115,7 @@ const app = new Vue({
             });
         },
 
-        addBasket: function (clicked_id) {
-            let btn_id = clicked_id;
-            this.goods.forEach((good) => {
-                if (good.id_product === btn_id) {
-                    this.basketList.push(good);
-                }
-            });
-            document.getElementById(clicked_id).textContent = 'Добавлено';
-            document.getElementById(clicked_id).disabled = true;
-
-        },
+       
     },
 
     async mounted() {
