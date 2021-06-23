@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HW-6</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="app">
+        <header>
+            <custom-input v-model="searchLine"></custom-input>
+            <button class="button-search" v-on:click='filterGoods'>Поиск</button>
+        </header>
+        <main>
+            <goods-list :goods="filteredGoods"></goods-list>
+            <button class="cart-button" type="button" v-on:click='isVisibleCart = !isVisibleCart'>Корзина</button>
+
+            <!-- <basket-list :goods='basketList' v-model = 'addBasket'></basket-list> -->
+            <div class="basket" id="basket" v-if='isVisibleCart'>
+                <h2>Корзина покупок</h2>
+                <div class="basket-list">
+                    <div class="basket-item" v-for="good in basketList" v-if="basketList.length > 0">
+                        <h3>{{good.product_name}}</h3>
+                        <p>{{good.price}}</p>
+                    </div>
+                    <div v-if="basketList.length === 0">
+                        <p>Вы пока еще ничего не добавили в корзину</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+    </div>
+
+
+
+
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+<script src="script.js"></script>
+
+</html>

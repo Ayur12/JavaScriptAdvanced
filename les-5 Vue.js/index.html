@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue.js</title>
+</head>
+
+<body>
+    <main>
+        <div id="app">
+            <label for="input"></label>
+            <input type="text" v-model='name'>
+            <h1 v-if='name.length !== 0'>Hello, my name is {{name.toUpperCase()}}</h1>
+            <!--<p v-for='nameEntity in listOfName' v-on:click='onClickSayHello'>{{nameEntity.name}} {{nameEntity.price}}
+            </p>-->
+            <p v-for='nameEntity in listOfName' @click='onClickSayHello'>
+                {{transformToUpperCase}}
+            </p>
+        </div>
+    </main>
+
+
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+<script src="script.js"></script>
+
+</html>
